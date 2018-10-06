@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.html.avaluos.dao.LetterDao;
 import com.html.avaluos.dao.MunicipalityDao;
 import com.html.avaluos.dao.PhoneDao;
 import com.html.avaluos.dao.Tabla0Dao;
+import com.html.avaluos.dao.UbicationDao;
 import com.html.avaluos.dao.UserDao;
+import com.html.avaluos.model.Ava_Letter;
 import com.html.avaluos.model.Ava_Municipality;
 import com.html.avaluos.model.Ava_Phone;
+import com.html.avaluos.model.Ava_Ubication;
 import com.html.avaluos.model.Ava_User;
 import com.html.avaluos.model.Tabla0;
 
@@ -28,6 +32,8 @@ public class IndexController {
 	PhoneDao phoneDao;
 	@Autowired
 	MunicipalityDao municipalityDao;
+	@Autowired
+	UbicationDao ubicationDao;
 	
 	@RequestMapping("/c")
 	public String city() {
@@ -82,6 +88,28 @@ public class IndexController {
 	@RequestMapping("/uc/{itemId}")
 	public Ava_Municipality uc(@PathVariable("itemId") Long itemId) {
 		 Ava_Municipality mu=municipalityDao.findOne(itemId);
+		return mu;
+	}
+	@RequestMapping("/ub")
+	public Ava_Ubication userub() {
+		Ava_Ubication ubi=new Ava_Ubication();
+		ubi.setAdicionales("");
+		ubi.setAva_Municipality(municipalityDao.findOne((long) 6));
+		ubi.setDireccion("Hermogenes Aguirre");
+		ubi.setLote("15");
+		ubi.setManzana("B");
+		ubi.setNumero("9234");
+		ubi.setTipoDireccion("Av");
+		ubi.setUrbanizacion("San Salvador");
+		ubi.setZona("");
+		ubi=ubicationDao.save(ubi);
+		return ubi;
+	}
+	@Autowired 
+	LetterDao letterDao; 
+	@RequestMapping("/le/{itemId}")
+	public Ava_Letter letter(@PathVariable("itemId") Long itemId) {
+		 Ava_Letter mu=letterDao.findOne(itemId);
 		return mu;
 	}
 }
