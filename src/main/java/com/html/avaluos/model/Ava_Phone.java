@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Ava_Phone {
 	@Id
@@ -19,6 +21,7 @@ public class Ava_Phone {
 	 private String typePhone;
 	 @ManyToOne(fetch=FetchType.EAGER)
 	 @JoinColumn(name="ID_USER")
+	 @JsonBackReference
 	 private Ava_User user;
 	public Ava_Phone() {
 		super();

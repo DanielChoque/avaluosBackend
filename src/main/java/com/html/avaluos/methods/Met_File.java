@@ -1,0 +1,56 @@
+package com.html.avaluos.methods;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Base64;
+
+import org.springframework.beans.factory.annotation.Value;
+
+
+public class Met_File {
+	public boolean saveImage(String ruta,String image) {
+		String string = image;
+		String[] parts = string.split(",");
+		if(parts.length>0) {
+		 OutputStream opStream = null;
+	        try {
+	        	String name = parts[0];
+				String image64=parts[1];
+	            byte[] byteContent = Base64.getDecoder().decode(image64);;
+	                                 ////"E:/avaluos/dani.jpg"+
+				File myFile = new File(ruta+name);
+	            // check if file exist, otherwise create the file before writing
+	            if (!myFile.exists()) {
+	                myFile.createNewFile();
+	            }
+	            opStream = new FileOutputStream(myFile);
+	            opStream.write(byteContent);
+	            opStream.flush();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            return false;
+	        } finally{
+	            try{
+	                if(opStream != null) opStream.close();
+	            } catch(Exception ex){
+	            	ex.printStackTrace();
+	            	return false; 
+	            }
+	        }
+	        return true;
+		}
+		else 
+			return false;
+	} 
+	@Value("${urlimage.path}")
+	private String dir;
+	public boolean createDir(String nameFolder) {
+		boolean directorio = new File(dir
+				+ "/"
+				+ nameFolder
+				).mkdirs();
+		return directorio;
+	}
+}

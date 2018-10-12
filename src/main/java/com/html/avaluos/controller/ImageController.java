@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.html.avaluos.dao.ImageDao;
 import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.model.Ava_Image;
 
@@ -18,21 +19,20 @@ import com.html.avaluos.model.Ava_Image;
 public class ImageController {
 	@Autowired 
 	UserAdminDao userAdminDao;
+	@Autowired
+	ImageDao imageDao;
+	
 	@RequestMapping(value="/image",method =RequestMethod.POST)
 	@ResponseBody
 	public String login(@Valid @RequestBody Ava_Image image) {
+		Ava_Image imageTemp=new Ava_Image();
 		
+		Date date = new Date();
+		imageTemp.setDate(date);
+		imageTemp.setName("aniem.jpg");
+		imageTemp.setObservation(image.getObservation());
+		imageTemp.setType(image.getType());
+		imageDao.save(imageTemp);
 		return "exito";		 
-	}
-	@RequestMapping("/ima")
-	public Ava_Image city() {
-		Ava_Image image=new Ava_Image();
-		image.setIdImage(1);
-		image.setName("nombre.jpg");
-		image.setObservation("obserbacion");		
-		image.setType("Principal");
-		Date date=new Date();
-		image.setDate(date);
-		return image;
 	}
 }

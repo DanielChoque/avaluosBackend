@@ -2,13 +2,17 @@ package com.html.avaluos.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +24,7 @@ import com.html.avaluos.dao.Tabla0Dao;
 import com.html.avaluos.dao.UbicationDao;
 import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.dao.UserDao;
+import com.html.avaluos.methods.Met_File;
 import com.html.avaluos.model.Ava_Letter;
 import com.html.avaluos.model.Ava_Municipality;
 import com.html.avaluos.model.Ava_Phone;
@@ -27,6 +32,7 @@ import com.html.avaluos.model.Ava_Ubication;
 import com.html.avaluos.model.Ava_User;
 import com.html.avaluos.model.Ava_UserAdmin;
 import com.html.avaluos.model.Tabla0;
+import com.html.avaluos.valuesd.Valores;
 
 @RestController
 public class IndexController {
@@ -126,11 +132,16 @@ public class IndexController {
 		 Ava_UserAdmin mu=userAdminDao.findByNameAdmin(itemId);
 		return mu;
 	}
+	
+	@Value("${urlimage.path}")
+	private String enableMocks;
 	@RequestMapping("/file")
 	public String fichero() {
+		Met_File meth=new Met_File();
+		//meth.createDir();
 		String ruta = "E:/avaluos/archivo.txt";
 		boolean directorio = new File("c:\\temp\\directorio").mkdirs();
-		System.out.println("boolena:"+directorio);
+		System.out.println("boolena:"+directorio+" value:"+this.enableMocks);
 		File archivo = new File(ruta);
 		BufferedWriter bw;
 		if(archivo.exists()) {
@@ -157,6 +168,26 @@ public class IndexController {
 			System.out.println("no existe");
 		      // El fichero no existe y hay que crearlo
 		}
+		 OutputStream opStream = null;
+	        try {
+	            byte[] byteContent = Base64.getDecoder().decode(new Valores().imagen());;
+	            File myFile = new File("E:/avaluos/dani.jpg");
+	            // check if file exist, otherwise create the file before writing
+	            if (!myFile.exists()) {
+	                myFile.createNewFile();
+	            }
+	            opStream = new FileOutputStream(myFile);
+	            opStream.write(byteContent);
+	            opStream.flush();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } finally{
+	            try{
+	                if(opStream != null) opStream.close();
+	            } catch(Exception ex){
+	                 
+	            }
+	        }
 		
 		return "";
 	}	

@@ -23,8 +23,7 @@ public class Ava_User {
 	private String lastName;
 	private String ci;
 	private String typeUser;
-	@OneToMany(mappedBy ="user",cascade=CascadeType.ALL)
-	@JsonBackReference
+	@OneToMany(mappedBy ="user",cascade=CascadeType.ALL)	
 	private List<Ava_Phone> phones= new ArrayList<>();
 	public Ava_User() {
 		// TODO Auto-generated constructor stub
