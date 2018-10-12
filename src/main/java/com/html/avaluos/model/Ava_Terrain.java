@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ava_Terrain {
@@ -12,6 +13,7 @@ public class Ava_Terrain {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "terrainId", nullable = false, updatable = false)
     private long terrainId;
+	@OneToOne
 	private Ava_Ubication ubication;
 	private double superficieTestimonioMt2;
 	private double superficieLevantamientoMt2;
@@ -27,6 +29,10 @@ public class Ava_Terrain {
 	private String aceraPeatonal;
 	private String transporte;
 	private String tipoVia;
+	private String colindanciaNorte;
+	private String colindanciaEste;
+	private String colindanciaOeste;
+	private String colindanciaSur;
 	public Ava_Terrain() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -127,6 +133,30 @@ public class Ava_Terrain {
 	public void setTipoVia(String tipoVia) {
 		this.tipoVia = tipoVia;
 	}
+	public String getColindanciaNorte() {
+		return colindanciaNorte;
+	}
+	public void setColindanciaNorte(String colindanciaNorte) {
+		this.colindanciaNorte = colindanciaNorte;
+	}
+	public String getColindanciaEste() {
+		return colindanciaEste;
+	}
+	public void setColindanciaEste(String colindanciaEste) {
+		this.colindanciaEste = colindanciaEste;
+	}
+	public String getColindanciaOeste() {
+		return colindanciaOeste;
+	}
+	public void setColindanciaOeste(String colindanciaOeste) {
+		this.colindanciaOeste = colindanciaOeste;
+	}
+	public String getColindanciaSur() {
+		return colindanciaSur;
+	}
+	public void setColindanciaSur(String colindanciaSur) {
+		this.colindanciaSur = colindanciaSur;
+	}
 	@Override
 	public String toString() {
 		return "Ava_Terrain [terrainId=" + terrainId + ", ubication=" + ubication + ", superficieTestimonioMt2="
@@ -134,6 +164,8 @@ public class Ava_Terrain {
 				+ frenteMt + ", fondoMt=" + fondoMt + ", forma=" + forma + ", topografia=" + topografia
 				+ ", usoSueloUrabano=" + usoSueloUrabano + ", usoZona=" + usoZona + ", resistenciaSuelo="
 				+ resistenciaSuelo + ", anchoViaMt=" + anchoViaMt + ", materialVia=" + materialVia + ", aceraPeatonal="
-				+ aceraPeatonal + ", transporte=" + transporte + ", tipoVia=" + tipoVia + "]";
+				+ aceraPeatonal + ", transporte=" + transporte + ", tipoVia=" + tipoVia + ", colindanciaNorte="
+				+ colindanciaNorte + ", colindanciaEste=" + colindanciaEste + ", colindanciaOeste=" + colindanciaOeste
+				+ ", colindanciaSur=" + colindanciaSur + "]";
 	}
 }

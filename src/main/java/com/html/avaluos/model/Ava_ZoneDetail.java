@@ -5,24 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 @Entity
-public class Ava_TerrainDescription {
+public class Ava_ZoneDetail {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "terrainDescriptionID", nullable = false, updatable = false)
-    private long terrainDescriptionID;
+    @Column(name = "zoneDetailId", nullable = false, updatable = false)
+    private long zoneDetailId;
 	@Column(columnDefinition = "text")
 	private java.lang.String body="";
-	public Ava_TerrainDescription() {
+	public Ava_ZoneDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getTerrainDescriptionID() {
-		return terrainDescriptionID;
+	public long getZoneDetailId() {
+		return zoneDetailId;
 	}
-	public void setTerrainDescriptionID(long terrainDescriptionID) {
-		this.terrainDescriptionID = terrainDescriptionID;
+	public void setZoneDetailId(long zoneDetailId) {
+		this.zoneDetailId = zoneDetailId;
 	}
 	public java.lang.String getBody() {
 		return body;
@@ -32,6 +31,6 @@ public class Ava_TerrainDescription {
 	}
 	@Override
 	public String toString() {
-		return "Ava_TerrainDescription [terrainDescriptionID=" + terrainDescriptionID + ", body=" + body + "]";
-	}
+		return "Ava_ZoneDetail [zoneDetailId=" + zoneDetailId + ", body=" + body + "]";
+	}	
 }

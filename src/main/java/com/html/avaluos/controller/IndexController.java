@@ -1,5 +1,9 @@
 package com.html.avaluos.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,12 +18,14 @@ import com.html.avaluos.dao.MunicipalityDao;
 import com.html.avaluos.dao.PhoneDao;
 import com.html.avaluos.dao.Tabla0Dao;
 import com.html.avaluos.dao.UbicationDao;
+import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.dao.UserDao;
 import com.html.avaluos.model.Ava_Letter;
 import com.html.avaluos.model.Ava_Municipality;
 import com.html.avaluos.model.Ava_Phone;
 import com.html.avaluos.model.Ava_Ubication;
 import com.html.avaluos.model.Ava_User;
+import com.html.avaluos.model.Ava_UserAdmin;
 import com.html.avaluos.model.Tabla0;
 
 @RestController
@@ -112,4 +118,46 @@ public class IndexController {
 		 Ava_Letter mu=letterDao.findOne(itemId);
 		return mu;
 	}
+	
+	@Autowired 
+	UserAdminDao userAdminDao; 
+	@RequestMapping("/usad/{itemId}")
+	public Ava_UserAdmin admin(@PathVariable("itemId") String itemId) {
+		 Ava_UserAdmin mu=userAdminDao.findByNameAdmin(itemId);
+		return mu;
+	}
+	@RequestMapping("/file")
+	public String fichero() {
+		String ruta = "E:/avaluos/archivo.txt";
+		boolean directorio = new File("c:\\temp\\directorio").mkdirs();
+		System.out.println("boolena:"+directorio);
+		File archivo = new File(ruta);
+		BufferedWriter bw;
+		if(archivo.exists()) {
+			System.out.println(" existe");
+			try {
+				bw = new BufferedWriter(new FileWriter(archivo));
+				bw.write("El fichero de texto ya estaba creado.");
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		      // El fichero ya existe
+		} else {
+			 try {
+				bw = new BufferedWriter(new FileWriter(archivo));
+				bw.write("Acabo de crear el fichero de texto.");
+				bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	         
+			System.out.println("no existe");
+		      // El fichero no existe y hay que crearlo
+		}
+		
+		return "";
+	}	
 }
