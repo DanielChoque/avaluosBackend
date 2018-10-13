@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.html.avaluos.dao.AvaluoDao;
 import com.html.avaluos.dao.LetterDao;
 import com.html.avaluos.dao.MunicipalityDao;
 import com.html.avaluos.dao.PhoneDao;
-import com.html.avaluos.dao.Tabla0Dao;
 import com.html.avaluos.dao.UbicationDao;
 import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.dao.UserDao;
 import com.html.avaluos.methods.Met_File;
+import com.html.avaluos.model.Ava_Avaluo;
 import com.html.avaluos.model.Ava_Letter;
 import com.html.avaluos.model.Ava_Municipality;
 import com.html.avaluos.model.Ava_Phone;
@@ -36,8 +37,8 @@ import com.html.avaluos.valuesd.Valores;
 
 @RestController
 public class IndexController {
-	@Autowired
-	Tabla0Dao tabla0Dao;
+	//@Autowired
+	//Tabla0Dao tabla0Dao;
 	@Autowired
 	UserDao userDao;
 	@Autowired
@@ -56,7 +57,7 @@ public class IndexController {
 		tabla0.setFactor_Inclinacion("factor_Inclinacion");
 		Date fecha = new Date();
 		tabla0.setFecha(fecha);
-		tabla0Dao.save(tabla0);
+		//tabla0Dao.save(tabla0);
 		return  "anime";
 	}
 	@RequestMapping("/u")
@@ -106,7 +107,7 @@ public class IndexController {
 	public Ava_Ubication userub() {
 		Ava_Ubication ubi=new Ava_Ubication();
 		ubi.setAdicionales("");
-		ubi.setAva_Municipality(municipalityDao.findOne((long) 6));
+		ubi.setMunicipality(municipalityDao.findOne((long) 6));
 		ubi.setDireccion("Hermogenes Aguirre");
 		ubi.setLote("15");
 		ubi.setManzana("B");
@@ -190,5 +191,12 @@ public class IndexController {
 	        }
 		
 		return "";
-	}	
+	}
+	@Autowired
+	AvaluoDao avaluoDao;
+	@RequestMapping("/a")
+	public Ava_Avaluo avaluo() {
+		Ava_Avaluo avaluo=avaluoDao.findOne((long) 1);
+		return avaluo;
+	}
 }

@@ -13,25 +13,27 @@ import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.model.Ava_UserAdmin;
 
 @RestController
+@RequestMapping("/login")
 public class LoginController {
 	@Autowired 
 	UserAdminDao userAdminDao;
-	@RequestMapping(value="/login",method =RequestMethod.POST)
+	@RequestMapping(value="/enter",method =RequestMethod.POST)
 	@ResponseBody
-	public String login(@Valid @RequestBody Ava_UserAdmin user) {
+	public Ava_UserAdmin login(@Valid @RequestBody Ava_UserAdmin user) {
 
 		 Ava_UserAdmin mu=userAdminDao.findByNameAdmin(user.getNameAdmin());
 		 if(mu==null) {			 
-			 return "error user";			 
+			 return null;			 
 		 }
 		 else {
 			 if(mu.getPassword().equals(user.getPassword())) {
-				 return "login";
+				 mu.setPassword("");
+				 return mu;
 			 }
 			 else {
 
 				 System.out.println(mu.toString());
-				 return "error password";
+				 return null;
 			 }
 		 }		 
 	}

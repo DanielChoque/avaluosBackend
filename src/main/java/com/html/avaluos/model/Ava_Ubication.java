@@ -22,7 +22,7 @@ public class Ava_Ubication {
 	private String manzana="";
 	private String lote="";
 	@OneToOne
-	private Ava_Municipality ava_Municipality;
+	private Ava_Municipality municipality;
 	public Ava_Ubication() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -81,17 +81,18 @@ public class Ava_Ubication {
 	public void setLote(String lote) {
 		this.lote = lote;
 	}
-	public Ava_Municipality getAva_Municipality() {
-		return ava_Municipality;
+	public Ava_Municipality getMunicipality() {
+		return municipality;
 	}
-	public void setAva_Municipality(Ava_Municipality ava_Municipality) {
-		this.ava_Municipality = ava_Municipality;
+	public void setMunicipality(Ava_Municipality municipality) {
+		this.municipality = municipality;
 	}
 	@Override
 	public String toString() {
 		return "Ava_Ubication [ubicationId=" + ubicationId + ", zona=" + zona + ", urbanizacion=" + urbanizacion
 				+ ", tipoDireccion=" + tipoDireccion + ", direccion=" + direccion + ", numero=" + numero
-				+ ", adicionales=" + adicionales + ", manzana=" + manzana + ", lote=" + lote + ", ava_Municipality="
-				+ ava_Municipality + "]";
-	}	
+				+ ", adicionales=" + adicionales + ", manzana=" + manzana + ", lote=" + lote + ", municipality="
+				+ municipality + "]";
+	}
+
 }

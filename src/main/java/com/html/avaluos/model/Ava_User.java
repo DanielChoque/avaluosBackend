@@ -10,8 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ava_User {
@@ -25,6 +24,8 @@ public class Ava_User {
 	private String typeUser;
 	@OneToMany(mappedBy ="user",cascade=CascadeType.ALL)	
 	private List<Ava_Phone> phones= new ArrayList<>();
+	@OneToOne
+	private Ava_Ubication ubication;
 	public Ava_User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -64,9 +65,15 @@ public class Ava_User {
 	public void setPhones(List<Ava_Phone> phones) {
 		this.phones = phones;
 	}
+	public Ava_Ubication getUbication() {
+		return ubication;
+	}
+	public void setUbication(Ava_Ubication ubication) {
+		this.ubication = ubication;
+	}
 	@Override
 	public String toString() {
 		return "Ava_User [IdUser=" + IdUser + ", name=" + name + ", lastName=" + lastName + ", ci=" + ci + ", typeUser="
-				+ typeUser + ", phones=" + phones + "]";
+				+ typeUser + ", phones=" + phones + ", ubication=" + ubication + "]";
 	}	
 }

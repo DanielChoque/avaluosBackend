@@ -12,31 +12,29 @@ public class Ava_Standard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "standardId", nullable = false, updatable = false)
     private long standardId;
-	private String key;
-	private String value;
+	private String llave;
+	private String valor;
 	private String type;
-	private String description;
-	
+	private String description;	
 	public Ava_Standard() {		
 	}
-	
 	public long getStandardId() {
 		return standardId;
 	}
 	public void setStandardId(long standardId) {
 		this.standardId = standardId;
 	}
-	public String getKey() {
-		return key;
+	public String getLlave() {
+		return llave;
 	}
-	public void setKey(String key) {
-		this.key = key;
+	public void setLlave(String llave) {
+		this.llave = llave;
 	}
-	public String getValue() {
-		return value;
+	public String getValor() {
+		return valor;
 	}
-	public void setValue(String value) {
-		this.value = value;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 	public String getType() {
 		return type;
@@ -52,8 +50,8 @@ public class Ava_Standard {
 	}
 	@Override
 	public String toString() {
-		return "Ava_Standard [standardId=" + standardId + ", key=" + key + ", value=" + value + ", type=" + type
+		return "Ava_Standard [standardId=" + standardId + ", llave=" + llave + ", valor=" + valor + ", type=" + type
 				+ ", description=" + description + "]";
-	}	
-	
+	}
+
 }

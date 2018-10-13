@@ -19,7 +19,7 @@ public class Ava_Municipality {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "province_id")
-    private Ava_Province ava_Province;
+    private Ava_Province province;
 	public Ava_Municipality() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,16 +36,15 @@ public class Ava_Municipality {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Ava_Province getAva_Province() {
-		return ava_Province;
+	public Ava_Province getProvince() {
+		return province;
 	}
-	public void setAva_Province(Ava_Province ava_Province) {
-		this.ava_Province = ava_Province;
+	public void setProvince(Ava_Province province) {
+		this.province = province;
 	}
 	@Override
 	public String toString() {
-		return "Ava_Municipality [municipalityId=" + municipalityId + ", name=" + name + ", ava_Province="
-				+ ava_Province + "]";
+		return "Ava_Municipality [municipalityId=" + municipalityId + ", name=" + name + ", province=" + province + "]";
 	}
-
+	
 }
