@@ -22,6 +22,10 @@ public class Ava_Avaluo {
 	private Ava_User userAvaluador;
 	@OneToMany(mappedBy ="avaluo",cascade=CascadeType.ALL)	
 	private List<Ava_AvaluoImage> avaluoImages =new ArrayList<>();
+	@OneToOne
+	private Ava_Company company;
+	@OneToOne
+	private Ava_Letter letter;
 	public Ava_Avaluo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,10 +48,22 @@ public class Ava_Avaluo {
 	public void setAvaluoImages(List<Ava_AvaluoImage> avaluoImages) {
 		this.avaluoImages = avaluoImages;
 	}
+	public Ava_Company getCompany() {
+		return company;
+	}
+	public void setCompany(Ava_Company company) {
+		this.company = company;
+	}
+	public Ava_Letter getLetter() {
+		return letter;
+	}
+	public void setLetter(Ava_Letter letter) {
+		this.letter = letter;
+	}
 	@Override
 	public String toString() {
 		return "Ava_Avaluo [avaluoId=" + avaluoId + ", userAvaluador=" + userAvaluador + ", avaluoImages="
-				+ avaluoImages + "]";
+				+ avaluoImages + ", company=" + company + ", letter=" + letter + "]";
 	}
-		
+	
 }

@@ -1,10 +1,15 @@
 package com.html.avaluos.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,10 +19,11 @@ public class Ava_Company {
     @Column(name = "companyId", nullable = false, updatable = false)
     private long companyId;
 	String nameCompany;
-	String nit;	
-	String chargeCompany;	//Ava_User responsibleCompany;
+	String nit;
+	@OneToMany(mappedBy ="company",cascade=CascadeType.ALL)	
+	private List<Ava_CompanyUser> companyUser =new ArrayList<>();
 	@OneToOne
-	Ava_Ubication ubicationCompany;
+	Ava_Ubication ubicationCompany;	
 	public Ava_Company() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,11 +46,11 @@ public class Ava_Company {
 	public void setNit(String nit) {
 		this.nit = nit;
 	}
-	public String getChargeCompany() {
-		return chargeCompany;
+	public List<Ava_CompanyUser> getCompanyUser() {
+		return companyUser;
 	}
-	public void setChargeCompany(String chargeCompany) {
-		this.chargeCompany = chargeCompany;
+	public void setCompanyUser(List<Ava_CompanyUser> companyUser) {
+		this.companyUser = companyUser;
 	}
 	public Ava_Ubication getUbicationCompany() {
 		return ubicationCompany;
@@ -55,6 +61,6 @@ public class Ava_Company {
 	@Override
 	public String toString() {
 		return "Ava_Company [companyId=" + companyId + ", nameCompany=" + nameCompany + ", nit=" + nit
-				+ ", chargeCompany=" + chargeCompany + ", ubicationCompany=" + ubicationCompany + "]";
+				+ ", companyUser=" + companyUser + ", ubicationCompany=" + ubicationCompany + "]";
 	}	
 }

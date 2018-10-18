@@ -1,7 +1,5 @@
 package com.html.avaluos.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,19 +13,13 @@ public class Ava_Letter {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "letterId", nullable = false, updatable = false)
     private long letterId;
-	private String nameDirected;
-	private String cargoDirected;
-	private String companyName;
 	private String ref;
 	@Column(columnDefinition = "text")
-	private java.lang.String body="";
-	private Date date;
+	private java.lang.String body="";		
 	@OneToOne
-	private Ava_Ubication ubication;	
+	private Ava_User userSolicitante;	
 	@OneToOne
-	private Ava_User userBorrower;	
-	@OneToOne
-	private Ava_User userOwner;
+	private Ava_User userPropietario;
 	public Ava_Letter() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -37,24 +29,6 @@ public class Ava_Letter {
 	}
 	public void setLetterId(long letterId) {
 		this.letterId = letterId;
-	}
-	public String getNameDirected() {
-		return nameDirected;
-	}
-	public void setNameDirected(String nameDirected) {
-		this.nameDirected = nameDirected;
-	}
-	public String getCargoDirected() {
-		return cargoDirected;
-	}
-	public void setCargoDirected(String cargoDirected) {
-		this.cargoDirected = cargoDirected;
-	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
 	}
 	public String getRef() {
 		return ref;
@@ -68,34 +42,21 @@ public class Ava_Letter {
 	public void setBody(java.lang.String body) {
 		this.body = body;
 	}
-	public Ava_Ubication getUbication() {
-		return ubication;
+	public Ava_User getUserSolicitante() {
+		return userSolicitante;
 	}
-	public void setUbication(Ava_Ubication ubication) {
-		this.ubication = ubication;
+	public void setUserSolicitante(Ava_User userSolicitante) {
+		this.userSolicitante = userSolicitante;
 	}
-	public Ava_User getUserBorrower() {
-		return userBorrower;
+	public Ava_User getUserPropietario() {
+		return userPropietario;
 	}
-	public void setUserBorrower(Ava_User userBorrower) {
-		this.userBorrower = userBorrower;
-	}
-	public Ava_User getUserOwner() {
-		return userOwner;
-	}
-	public void setUserOwner(Ava_User userOwner) {
-		this.userOwner = userOwner;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setUserPropietario(Ava_User userPropietario) {
+		this.userPropietario = userPropietario;
 	}
 	@Override
 	public String toString() {
-		return "Ava_Letter [letterId=" + letterId + ", nameDirected=" + nameDirected + ", cargoDirected="
-				+ cargoDirected + ", companyName=" + companyName + ", ref=" + ref + ", body=" + body + ", date=" + date
-				+ ", ubication=" + ubication + ", userBorrower=" + userBorrower + ", userOwner=" + userOwner + "]";
+		return "Ava_Letter [letterId=" + letterId + ", ref=" + ref + ", body=" + body + ", userSolicitante="
+				+ userSolicitante + ", userPropietario=" + userPropietario + "]";
 	}	
 }

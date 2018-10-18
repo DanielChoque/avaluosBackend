@@ -12,44 +12,43 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Ava_AvaluoImage {
+public class Ava_CompanyUser {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-	private long avaluoImageId;
+	private long companyUserId;
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     @JsonBackReference
-    private Ava_Avaluo avaluo;
+    private Ava_Company company;
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn   
-    private Ava_Image image;
-	public Ava_AvaluoImage() {
+    private Ava_User user;
+	public Ava_CompanyUser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getAvaluoImageId() {
-		return avaluoImageId;
+	public long getCompanyUserId() {
+		return companyUserId;
 	}
-	public void setAvaluoImageId(long avaluoImageId) {
-		this.avaluoImageId = avaluoImageId;
+	public void setCompanyUserId(long companyUserId) {
+		this.companyUserId = companyUserId;
 	}
-	public Ava_Avaluo getAvaluo() {
-		return avaluo;
+	public Ava_Company getCompany() {
+		return company;
 	}
-	public void setAvaluo(Ava_Avaluo avaluo) {
-		this.avaluo = avaluo;
+	public void setCompany(Ava_Company company) {
+		this.company = company;
 	}
-	public Ava_Image getImage() {
-		return image;
+	public Ava_User getUser() {
+		return user;
 	}
-	public void setImage(Ava_Image image) {
-		this.image = image;
+	public void setUser(Ava_User user) {
+		this.user = user;
 	}
 	@Override
 	public String toString() {
-		return "Ava_AvaluoImage [avaluoImageId=" + avaluoImageId + ", avaluo=" + avaluo.getAvaluoId() + ", image=" + image.getIdImage() + "]";
+		return "Ava_CompanyUser [companyUserId=" + companyUserId + ", company=" + company + ", user=" + user + "]";
 	}
-	
 	
 }
