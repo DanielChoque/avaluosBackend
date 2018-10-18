@@ -16,7 +16,7 @@ public class Ava_UserAdmin {
 	private String nameAdmin="";
 	private String password="";
 	@OneToOne
-	private Ava_User userAvaluo;
+	private Ava_User userAvaluador;
 	public Ava_UserAdmin() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -39,15 +39,16 @@ public class Ava_UserAdmin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Ava_User getUserAvaluo() {
-		return userAvaluo;
+	public Ava_User getUserAvaluador() {
+		return userAvaluador;
 	}
-	public void setUserAvaluo(Ava_User userAvaluo) {
-		this.userAvaluo = userAvaluo;
+	public void setUserAvaluador(Ava_User userAvaluador) {
+		this.userAvaluador = userAvaluador;
 	}
 	@Override
 	public String toString() {
 		return "Ava_UserAdmin [userAdminId=" + userAdminId + ", nameAdmin=" + nameAdmin + ", password=" + password
-				+ ", userAvaluo=" + userAvaluo + "]";
-	}	
+				+ ", userAvaluador=" + userAvaluador + "]";
+	}
+		
 }

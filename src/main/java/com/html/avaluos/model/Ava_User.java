@@ -1,6 +1,7 @@
 package com.html.avaluos.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,24 +17,26 @@ import javax.persistence.OneToOne;
 public class Ava_User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "IdUser", nullable = false, updatable = false)
-    private long IdUser;
+    @Column(name = "userId", nullable = false, updatable = false)
+    private long userId;
 	private String name;
 	private String lastName;
 	private String ci;
 	private String typeUser;
+	private String occupation;
+	private Date birthday;
 	@OneToMany(mappedBy ="user",cascade=CascadeType.ALL)	
 	private List<Ava_Phone> phones= new ArrayList<>();
 	@OneToOne
-	private Ava_Ubication ubication;
+	private Ava_Ubication ubication;	
 	public Ava_User() {
 		// TODO Auto-generated constructor stub
 	}
-	public long getIdUser() {
-		return IdUser;
+	public long getUserId() {
+		return userId;
 	}
-	public void setIdUser(long idUser) {
-		IdUser = idUser;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public String getName() {
 		return name;
@@ -59,6 +62,18 @@ public class Ava_User {
 	public void setTypeUser(String typeUser) {
 		this.typeUser = typeUser;
 	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 	public List<Ava_Phone> getPhones() {
 		return phones;
 	}
@@ -73,7 +88,8 @@ public class Ava_User {
 	}
 	@Override
 	public String toString() {
-		return "Ava_User [IdUser=" + IdUser + ", name=" + name + ", lastName=" + lastName + ", ci=" + ci + ", typeUser="
-				+ typeUser + ", phones=" + phones + ", ubication=" + ubication + "]";
+		return "Ava_User [userId=" + userId + ", name=" + name + ", lastName=" + lastName + ", ci=" + ci + ", typeUser="
+				+ typeUser + ", occupation=" + occupation + ", birthday=" + birthday + ", phones=" + phones
+				+ ", ubication=" + ubication + "]";
 	}	
 }

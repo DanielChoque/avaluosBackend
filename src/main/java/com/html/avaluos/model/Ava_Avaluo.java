@@ -16,27 +16,21 @@ import javax.persistence.OneToOne;
 public class Ava_Avaluo {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "IdAvaluo", nullable = false, updatable = false)
-	private long IdAvaluo;
-	@OneToMany(mappedBy ="avaluo",cascade=CascadeType.ALL)	
-	private List<Ava_Image> images=new ArrayList<>();
+    @Column(nullable = false, updatable = false)
+	private long avaluoId;	
 	@OneToOne
 	private Ava_User userAvaluador;
+	@OneToMany(mappedBy ="avaluo",cascade=CascadeType.ALL)	
+	private List<Ava_AvaluoImage> avaluoImages =new ArrayList<>();
 	public Ava_Avaluo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getIdAvaluo() {
-		return IdAvaluo;
+	public long getAvaluoId() {
+		return avaluoId;
 	}
-	public void setIdAvaluo(long idAvaluo) {
-		IdAvaluo = idAvaluo;
-	}
-	public List<Ava_Image> getImages() {
-		return images;
-	}
-	public void setImages(List<Ava_Image> images) {
-		this.images = images;
+	public void setAvaluoId(long avaluoId) {
+		this.avaluoId = avaluoId;
 	}
 	public Ava_User getUserAvaluador() {
 		return userAvaluador;
@@ -44,8 +38,16 @@ public class Ava_Avaluo {
 	public void setUserAvaluador(Ava_User userAvaluador) {
 		this.userAvaluador = userAvaluador;
 	}
+	public List<Ava_AvaluoImage> getAvaluoImages() {
+		return avaluoImages;
+	}
+	public void setAvaluoImages(List<Ava_AvaluoImage> avaluoImages) {
+		this.avaluoImages = avaluoImages;
+	}
 	@Override
 	public String toString() {
-		return "Ava_Avaluo [IdAvaluo=" + IdAvaluo + ", images=" + images + ", userAvaluador=" + userAvaluador + "]";
-	}	
+		return "Ava_Avaluo [avaluoId=" + avaluoId + ", userAvaluador=" + userAvaluador + ", avaluoImages="
+				+ avaluoImages + "]";
+	}
+		
 }

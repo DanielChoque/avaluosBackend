@@ -19,8 +19,10 @@ public class AvaluoController {
 	AvaluoDao avaluoDao;
 	@RequestMapping(value="/create",method =RequestMethod.POST)
 	@ResponseBody
-	public String login(@Valid @RequestBody Ava_Avaluo avaluo) {
-		avaluoDao.save(avaluo);
-		return "exito";
+	public Ava_Avaluo login(@Valid @RequestBody Ava_Avaluo avaluo) {
+		Ava_Avaluo avaluoTemp=new Ava_Avaluo();
+		avaluoTemp=avaluoDao.save(avaluo);
+		System.out.println(""+avaluoTemp.toString());
+		return avaluoTemp;
 	}
 }

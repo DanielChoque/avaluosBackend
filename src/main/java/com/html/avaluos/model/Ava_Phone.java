@@ -15,29 +15,29 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Ava_Phone {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "IdPhone", nullable = false, updatable = false)
-	 private long IdPhone;
-	 private String number;
+    @Column(nullable = false, updatable = false)
+	 private long phoneId;
+	 private String numberPhone;
 	 private String typePhone;
 	 @ManyToOne(fetch=FetchType.EAGER)
-	 @JoinColumn(name="ID_USER")
+	 @JoinColumn
 	 @JsonBackReference
 	 private Ava_User user;
 	public Ava_Phone() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getIdPhone() {
-		return IdPhone;
+	public long getPhoneId() {
+		return phoneId;
 	}
-	public void setIdPhone(long idPhone) {
-		IdPhone = idPhone;
+	public void setPhoneId(long phoneId) {
+		this.phoneId = phoneId;
 	}
-	public String getNumber() {
-		return number;
+	public String getNumberPhone() {
+		return numberPhone;
 	}
-	public void setNumber(String number) {
-		this.number = number;
+	public void setNumberPhone(String numberPhone) {
+		this.numberPhone = numberPhone;
 	}
 	public String getTypePhone() {
 		return typePhone;
@@ -53,8 +53,6 @@ public class Ava_Phone {
 	}
 	@Override
 	public String toString() {
-		return "Ava_Phone [IdPhone=" + IdPhone + ", number=" + number + ", typePhone=" + typePhone + ", user=" + user
-				+ "]";
-	}
-	 
+		return "Ava_Phone [phoneId=" + phoneId + ", numberPhone=" + numberPhone + ", typePhone=" + typePhone + "]";
+	}		 
 }

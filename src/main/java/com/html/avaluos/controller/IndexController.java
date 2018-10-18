@@ -18,14 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.html.avaluos.dao.AvaluoDao;
+import com.html.avaluos.dao.CompanyDao;
 import com.html.avaluos.dao.LetterDao;
 import com.html.avaluos.dao.MunicipalityDao;
 import com.html.avaluos.dao.PhoneDao;
 import com.html.avaluos.dao.UbicationDao;
 import com.html.avaluos.dao.UserAdminDao;
 import com.html.avaluos.dao.UserDao;
-import com.html.avaluos.methods.Met_File;
 import com.html.avaluos.model.Ava_Avaluo;
+import com.html.avaluos.model.Ava_Company;
 import com.html.avaluos.model.Ava_Letter;
 import com.html.avaluos.model.Ava_Municipality;
 import com.html.avaluos.model.Ava_Phone;
@@ -68,15 +69,17 @@ public class IndexController {
 		user.setName("federyco");
 		user.setTypeUser("Dueño");
 		user.setPhones(null);
+		Date fecha=new Date();
+		user.setBirthday(fecha);
 		Ava_User userTemp=userDao.save(user);
 		
 		Ava_Phone phone=new Ava_Phone();
-		phone.setNumber("75203696");
+		phone.setNumberPhone("75203696");
 		phone.setTypePhone("Movil");
 		phone.setUser(userTemp);
 		phoneDao.save(phone);
 		Ava_Phone phone2=new Ava_Phone();
-		phone2.setNumber("222266565");
+		phone2.setNumberPhone("222266565");
 		phone2.setTypePhone("Home");
 		phone2.setUser(userTemp);
 		phoneDao.save(phone2);
@@ -90,12 +93,13 @@ public class IndexController {
 	@RequestMapping("/p")
 	public Ava_Phone phone() {
 		Ava_Phone phone=new Ava_Phone();
-		phone=phoneDao.findOne((long) 7);
+		phone=phoneDao.findOne((long) 1);
 		return phone;
 	}
 	@RequestMapping("/r")
 	public Ava_User userR() {
 		Ava_User user=userDao.findOne((long) 1);
+		System.out.println("daniel:"+user.toString());
 		return user;
 	}
 	@RequestMapping("/uc/{itemId}")
@@ -138,7 +142,7 @@ public class IndexController {
 	private String enableMocks;
 	@RequestMapping("/file")
 	public String fichero() {
-		Met_File meth=new Met_File();
+		//Met_File meth=new Met_File();
 		//meth.createDir();
 		String ruta = "E:/avaluos/archivo.txt";
 		boolean directorio = new File("c:\\temp\\directorio").mkdirs();
@@ -197,6 +201,20 @@ public class IndexController {
 	@RequestMapping("/a")
 	public Ava_Avaluo avaluo() {
 		Ava_Avaluo avaluo=avaluoDao.findOne((long) 1);
+		System.out.println("avaluo:"+avaluo.toString());
+		return avaluo;
+	}
+	@Autowired
+	CompanyDao companyDao;
+	@RequestMapping("/com")
+	public Ava_Company Company() {
+		Ava_Company avaluo=companyDao.findOne((long) 1);
+		/*Ava_User user=userDao.findOne((long) 2);
+		List<Ava_User> responsibleCompany=new ArrayList<>();
+		responsibleCompany.add(user);
+		Ava_User user2=userDao.findOne((long) 16);
+		responsibleCompany.add(user2);
+		avaluo.setResponsibleCompany(responsibleCompany);*/
 		return avaluo;
 	}
 }
