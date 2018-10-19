@@ -48,8 +48,7 @@ public class Ava_AvaluoImage {
 	}
 	@Override
 	public String toString() {
-		return "Ava_AvaluoImage [avaluoImageId=" + avaluoImageId + ", avaluo=" + avaluo.getAvaluoId() + ", image=" + image.getIdImage() + "]";
+		return "Ava_AvaluoImage [avaluoImageId=" + avaluoImageId + ", image=" + image + "]";
 	}
-	
-	
+		
 }

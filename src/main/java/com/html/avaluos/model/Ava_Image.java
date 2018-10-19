@@ -18,7 +18,6 @@ public class Ava_Image {
 	private String type;
 	private Date date;
 	private String observation;
-
 	public Ava_Image() {
 		// TODO Auto-generated constructor stub
 	}
@@ -55,9 +54,7 @@ public class Ava_Image {
 	@Override
 	public String toString() {
 		return "Ava_Image [IdImage=" + IdImage + ", name=" + name + ", type=" + type + ", date=" + date
-				+ ", observation=" + observation + ", getIdImage()=" + getIdImage() + ", getName()=" + getName()
-				+ ", getType()=" + getType() + ", getDate()=" + getDate() + ", getObservation()=" + getObservation()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}		
+				+ ", observation=" + observation + "]";
+	}
+	 
 }

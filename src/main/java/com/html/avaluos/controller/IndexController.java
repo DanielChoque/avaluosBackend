@@ -201,7 +201,7 @@ public class IndexController {
 	@RequestMapping("/a")
 	public Ava_Avaluo avaluo() {
 		Ava_Avaluo avaluo=avaluoDao.findOne((long) 1);
-		System.out.println("avaluo:"+avaluo.toString());
+		//System.out.println("avaluo:"+avaluo.toString());
 		return avaluo;
 	}
 	@Autowired
