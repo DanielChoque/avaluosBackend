@@ -26,6 +26,12 @@ public class Ava_Avaluo {
 	private Ava_Company company;
 	@OneToOne
 	private Ava_Letter letter;
+	@OneToOne
+	private Ava_User userCompany;
+	@OneToOne
+	private Ava_User userPrestatario ;	
+	@OneToOne
+	private Ava_User userPropietario;
 	public Ava_Avaluo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -60,10 +66,28 @@ public class Ava_Avaluo {
 	public void setLetter(Ava_Letter letter) {
 		this.letter = letter;
 	}
+	public Ava_User getUserCompany() {
+		return userCompany;
+	}
+	public void setUserCompany(Ava_User userCompany) {
+		this.userCompany = userCompany;
+	}
+	public Ava_User getUserPrestatario() {
+		return userPrestatario;
+	}
+	public void setUserPrestatario(Ava_User userPrestatario) {
+		this.userPrestatario = userPrestatario;
+	}
+	public Ava_User getUserPropietario() {
+		return userPropietario;
+	}
+	public void setUserPropietario(Ava_User userPropietario) {
+		this.userPropietario = userPropietario;
+	}
 	@Override
 	public String toString() {
 		return "Ava_Avaluo [avaluoId=" + avaluoId + ", userAvaluador=" + userAvaluador + ", avaluoImages="
-				+ avaluoImages + ", company=" + company + ", letter=" + letter + "]";
-	}
-	
+				+ avaluoImages + ", company=" + company + ", letter=" + letter + ", userCompany=" + userCompany
+				+ ", userPrestatario=" + userPrestatario + ", userPropietario=" + userPropietario + "]";
+	}	
 }

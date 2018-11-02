@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Ava_Letter {
@@ -15,11 +14,7 @@ public class Ava_Letter {
     private long letterId;
 	private String ref;
 	@Column(columnDefinition = "text")
-	private java.lang.String body="";		
-	@OneToOne
-	private Ava_User userSolicitante;	
-	@OneToOne
-	private Ava_User userPropietario;
+	private java.lang.String body="";	
 	public Ava_Letter() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -42,21 +37,8 @@ public class Ava_Letter {
 	public void setBody(java.lang.String body) {
 		this.body = body;
 	}
-	public Ava_User getUserSolicitante() {
-		return userSolicitante;
-	}
-	public void setUserSolicitante(Ava_User userSolicitante) {
-		this.userSolicitante = userSolicitante;
-	}
-	public Ava_User getUserPropietario() {
-		return userPropietario;
-	}
-	public void setUserPropietario(Ava_User userPropietario) {
-		this.userPropietario = userPropietario;
-	}
 	@Override
 	public String toString() {
-		return "Ava_Letter [letterId=" + letterId + ", ref=" + ref + ", body=" + body + ", userSolicitante="
-				+ userSolicitante + ", userPropietario=" + userPropietario + "]";
+		return "Ava_Letter [letterId=" + letterId + ", ref=" + ref + ", body=" + body + "]";
 	}	
 }

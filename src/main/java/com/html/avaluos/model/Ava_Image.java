@@ -14,7 +14,8 @@ public class Ava_Image {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IdImage", nullable = false, updatable = false)
 	private long IdImage;
-	private String name;
+	@Column(columnDefinition = "text")
+	private java.lang.String name;
 	private String type;
 	private Date date;
 	private String observation;

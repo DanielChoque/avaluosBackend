@@ -24,6 +24,7 @@ public class Ava_User {
 	private String ci;
 	private String typeUser;
 	private String occupation;
+	private String titleUser;
 	private Date birthday;
 	@OneToMany(mappedBy ="user",cascade=CascadeType.ALL)	
 	private List<Ava_Phone> phones= new ArrayList<>();
@@ -86,10 +87,16 @@ public class Ava_User {
 	public void setUbication(Ava_Ubication ubication) {
 		this.ubication = ubication;
 	}
+	public String getTitleUser() {
+		return titleUser;
+	}
+	public void setTitleUser(String titleUser) {
+		this.titleUser = titleUser;
+	}
 	@Override
 	public String toString() {
 		return "Ava_User [userId=" + userId + ", name=" + name + ", lastName=" + lastName + ", ci=" + ci + ", typeUser="
-				+ typeUser + ", occupation=" + occupation + ", birthday=" + birthday + ", phones=" + phones
-				+ ", ubication=" + ubication + "]";
+				+ typeUser + ", occupation=" + occupation + ", titleUser=" + titleUser + ", birthday=" + birthday
+				+ ", phones=" + phones + ", ubication=" + ubication + "]";
 	}	
 }
